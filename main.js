@@ -1,3 +1,4 @@
+const bodyElement = document.querySelector('body')
 let coin = {
     state: 0,
     flip: function() {
@@ -9,25 +10,45 @@ let coin = {
         } else {
             this.state = 1
         }
-        
     },
     toString: function() {
         /* 2. Return the string "Heads" or "Tails", depending on whether
            "this.state" is 0 or 1. */
+           let stringToPage = document.createElement('div')
+           bodyElement.append(stringToPage)
            if(this.state === 0) {
+            stringToPage.append('Heads')
             return 'Heads'
            } else if(this.state === 1) {
+            stringToPage.append('Tails')
             return 'Tails'
-           }
-           console.log(coin.state)
+           } 
     },
     toHTML: function() {
+        const bodyElement = document.querySelector('body')
         let image = document.createElement('img');
-        /* 3. Set the properties of this image element to show either face-up
-           or face-down, depending on whether this.state is 0 or 1.*/
+           if(this.state === 0) {
+            bodyElement.append(image)
+            image.src = './assets/images/heads.png'            
+           } else if(this.state === 1) {
+            bodyElement.append(image)
+            image.src = './assets/images/tails.png'
+           }
         return image;
+    }, 
+    flipTwentyString: function() {
+        for(let index = 0; index < 20; index++) {
+            this.flip()
+            this.toString()
+        }
+    },
+    flipTwentyImage: function() {
+       
+        for(let index = 0; index < 20; index++) {
+            this.flip()
+            this.toHTML()
+        }
     }
 };
 
-// console.log(coin.toString())
-// console.log(coin.state)
+
