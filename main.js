@@ -14,18 +14,16 @@ let coin = {
     toString: function() {
         /* 2. Return the string "Heads" or "Tails", depending on whether
            "this.state" is 0 or 1. */
-           let stringToPage = document.createElement('div')
-           bodyElement.append(stringToPage)
+          
            if(this.state === 0) {
-            stringToPage.append('Heads')
+           
             return 'Heads'
            } else if(this.state === 1) {
-            stringToPage.append('Tails')
+            
             return 'Tails'
            } 
     },
     toHTML: function() {
-        const bodyElement = document.querySelector('body')
         let image = document.createElement('img');
            if(this.state === 0) {
             bodyElement.append(image)
@@ -35,20 +33,23 @@ let coin = {
             image.src = './assets/images/tails.png'
            }
         return image;
-    }, 
-    flipTwentyString: function() {
+    }
+}
+    function flipTwentyString() {
         for(let index = 0; index < 20; index++) {
-            this.flip()
-            this.toString()
-        }
-    },
-    flipTwentyImage: function() {
-       
-        for(let index = 0; index < 20; index++) {
-            this.flip()
-            this.toHTML()
+            let stringToPage = document.createElement('p')
+            coin.flip()
+            stringToPage.append(coin.toString())
+            bodyElement.append(stringToPage)
         }
     }
-};
+    function flipTwentyImage() {
+       
+        for(let index = 0; index < 20; index++) {
+            coin.flip()
+            bodyElement.append(coin.toHTML())
+        }
+    }
+
 
 
